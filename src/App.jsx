@@ -12,6 +12,7 @@ function App() {
     aceitaPolitica: false,
     receberAtualizacoes: ''
   })
+  const [isSubmitted, setIsSubmitted] = useState(false)
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target
@@ -24,7 +25,7 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault()
     console.log('Form data:', formData)
-    alert('Form submitted successfully!')
+    setIsSubmitted(true)
   }
 
   return (
@@ -34,6 +35,7 @@ function App() {
         <div>
           <label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold' }}>Name:</label>
           <input
+            data-cy="name-input"
             type="text"
             name="nome"
             value={formData.nome}
@@ -46,6 +48,7 @@ function App() {
         <div>
           <label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold' }}>Surname:</label>
           <input
+            data-cy="surname-input"
             type="text"
             name="sobrenome"
             value={formData.sobrenome}
@@ -58,6 +61,7 @@ function App() {
         <div>
           <label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold' }}>Age:</label>
           <input
+            data-cy="age-input"
             type="number"
             name="idade"
             value={formData.idade}
@@ -71,6 +75,7 @@ function App() {
         <div>
           <label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold' }}>City:</label>
           <input
+            data-cy="city-input"
             type="text"
             name="cidade"
             value={formData.cidade}
@@ -83,6 +88,7 @@ function App() {
         <div>
           <label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold' }}>Phone:</label>
           <input
+            data-cy="phone-input"
             type="tel"
             name="telefone"
             value={formData.telefone}
@@ -95,6 +101,7 @@ function App() {
         <div>
           <label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold' }}>Email:</label>
           <input
+            data-cy="email-input"
             type="email"
             name="email"
             value={formData.email}
@@ -106,6 +113,7 @@ function App() {
 
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
           <input
+            data-cy="privacy-policy-checkbox"
             type="checkbox"
             name="aceitaPolitica"
             checked={formData.aceitaPolitica}
@@ -123,6 +131,7 @@ function App() {
           <div style={{ display: 'flex', gap: '20px' }}>
             <label style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
               <input
+                data-cy="email-updates-radio-sim"
                 type="radio"
                 name="receberAtualizacoes"
                 value="sim"
@@ -134,6 +143,7 @@ function App() {
             </label>
             <label style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
               <input
+                data-cy="email-updates-radio-nao"
                 type="radio"
                 name="receberAtualizacoes"
                 value="nao"
@@ -146,6 +156,7 @@ function App() {
         </div>
 
         <button
+          data-cy="submit-button"
           type="submit"
           style={{
             padding: '12px 20px',
@@ -163,6 +174,19 @@ function App() {
         >
           Submit
         </button>
+        {isSubmitted && (
+          <p
+            data-cy="success-message"
+            style={{
+              color: 'green',
+              fontWeight: 'bold',
+              marginTop: '10px',
+              textAlign: 'center'
+            }}
+          >
+            Form submitted
+          </p>
+        )}
       </form>
     </div>
   )
