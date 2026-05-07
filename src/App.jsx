@@ -23,16 +23,16 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log('Dados do formulário:', formData)
-    alert('Formulário enviado com sucesso!')
+    console.log('Form data:', formData)
+    alert('Form submitted successfully!')
   }
 
   return (
     <div style={{ maxWidth: '500px', margin: '50px auto', padding: '20px', fontFamily: 'Arial, sans-serif' }}>
-      <h1 style={{ textAlign: 'center', marginBottom: '30px' }}>Formulário de Cadastro</h1>
+      <h1 style={{ textAlign: 'center', marginBottom: '30px' }}>Registration Form</h1>
       <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
         <div>
-          <label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold' }}>Nome:</label>
+          <label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold' }}>Name:</label>
           <input
             type="text"
             name="nome"
@@ -44,7 +44,7 @@ function App() {
         </div>
 
         <div>
-          <label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold' }}>Sobrenome:</label>
+          <label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold' }}>Surname:</label>
           <input
             type="text"
             name="sobrenome"
@@ -56,7 +56,7 @@ function App() {
         </div>
 
         <div>
-          <label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold' }}>Idade:</label>
+          <label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold' }}>Age:</label>
           <input
             type="number"
             name="idade"
@@ -69,7 +69,7 @@ function App() {
         </div>
 
         <div>
-          <label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold' }}>Cidade:</label>
+          <label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold' }}>City:</label>
           <input
             type="text"
             name="cidade"
@@ -81,7 +81,7 @@ function App() {
         </div>
 
         <div>
-          <label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold' }}>Telefone:</label>
+          <label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold' }}>Phone:</label>
           <input
             type="tel"
             name="telefone"
@@ -113,12 +113,12 @@ function App() {
             required
             style={{ width: '18px', height: '18px' }}
           />
-          <label style={{ margin: 0 }}>Aceito a política de privacidade</label>
+          <label style={{ margin: 0 }}>I accept the privacy policy</label>
         </div>
 
         <div>
           <label style={{ display: 'block', marginBottom: '10px', fontWeight: 'bold' }}>
-            Deseja receber atualizações por email?
+            Would you like to receive email updates?
           </label>
           <div style={{ display: 'flex', gap: '20px' }}>
             <label style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
@@ -130,7 +130,7 @@ function App() {
                 onChange={handleChange}
                 required
               />
-              Sim
+              Yes
             </label>
             <label style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
               <input
@@ -140,7 +140,7 @@ function App() {
                 checked={formData.receberAtualizacoes === 'nao'}
                 onChange={handleChange}
               />
-              Não
+              No
             </label>
           </div>
         </div>
@@ -161,7 +161,7 @@ function App() {
           onMouseOver={(e) => e.target.style.backgroundColor = '#0056b3'}
           onMouseOut={(e) => e.target.style.backgroundColor = '#007bff'}
         >
-          Enviar
+          Submit
         </button>
       </form>
     </div>
