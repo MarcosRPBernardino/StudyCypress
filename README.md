@@ -6,7 +6,9 @@ A simple form project developed in React for study and automated testing with Cy
 
 - React 19.2.5
 - Vite 8.0.10
-- Cypress 15.14.2
+- Cypress 15.15.0
+- Mochawesome
+- Cypress Code Coverage
 
 ## Form Structure
 
@@ -74,8 +76,10 @@ This will open the Cypress interactive interface where you can:
 To run all tests in the terminal (headless):
 
 ```bash
-npx cypress run
+npm run cy:run
 ```
+
+This runs Cypress in Chrome and generates a Mochawesome report.
 
 To run a specific test file:
 
@@ -89,6 +93,80 @@ To run tests with browser visualization:
 
 ```bash
 npx cypress run --headed
+```
+
+### Renderer process crash
+
+If Cypress shows `Electron Renderer process just crashed`, try running the tests in Chrome or Edge instead of Electron:
+
+```bash
+npm run cy:run
+```
+
+Or with Edge:
+
+```bash
+npm run cy:run:edge
+```
+
+If `npx cypress verify` fails, clear and reinstall the Cypress binary cache:
+
+```bash
+npx cypress cache clear
+npx cypress install
+npx cypress verify
+```
+
+## Mochawesome Report
+
+Mochawesome is configured as the default Cypress reporter.
+
+To install the report dependencies:
+
+```bash
+npm install
+```
+
+To run the tests and generate the report:
+
+```bash
+npm run cy:run
+```
+
+The report will be generated in:
+
+```bash
+cypress/reports/mochawesome
+```
+
+## Cypress Code Coverage
+
+Code coverage is already configured with `@cypress/code-coverage`, `nyc`, and `babel-plugin-istanbul`.
+
+To generate the coverage report:
+
+1. Start the development server with coverage instrumentation:
+
+```bash
+npm run dev:coverage
+```
+
+2. In another terminal, run the Cypress tests:
+
+```bash
+npm run coverage
+```
+
+After the tests finish, the HTML report will be available at:
+
+```bash
+coverage/lcov-report/index.html
+```
+
+To see a coverage summary in the terminal:
+
+```bash
+npx nyc report --reporter=text-summary
 ```
 
 ## Cypress Test Structure
@@ -115,7 +193,10 @@ describe('Registration Form', () => {
 - `npm run build` - Create a production build
 - `npm run preview` - Preview the production build
 - `npx cypress open` - Open the Cypress interface
-- `npx cypress run` - Run tests in terminal
+- `npm run cy:run` - Run tests in Chrome and generate Mochawesome report
+- `npm run cy:run:edge` - Run tests in Edge and generate Mochawesome report
+- `npm run coverage` - Run tests with code coverage enabled
+- `npx nyc report --reporter=text-summary` - Show coverage summary in terminal
 
 ## Tips for Studying with Cypress
 

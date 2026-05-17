@@ -1,4 +1,6 @@
 describe('test for form', () => {
+
+  // Arrange
   beforeEach(() => {
     cy.visit('http://localhost:5173/')
   });
@@ -17,6 +19,7 @@ describe('test for form', () => {
   })
 
   it('should be possible to fill the form', () => {
+    // Act
     cy.get('[data-cy="name-input"]').type('Marcos')
     cy.get('[data-cy="surname-input"]').type('Bernardino')
     cy.get('[data-cy="age-input"]').type('27')
@@ -26,6 +29,8 @@ describe('test for form', () => {
     cy.get('[data-cy="privacy-policy-checkbox"]').check()
     cy.get('[data-cy="email-updates-radio-sim"]').check()
     cy.get('[data-cy="submit-button"]').click()
+
+    // Assert
     cy.get('[data-cy="success-message"]').should('be.visible')
   })
 
